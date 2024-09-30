@@ -337,7 +337,7 @@ def chat2plot(
               data structure. If you want a custom schema definition, pass a type inheriting from pydantic.BaseModel
               as your own chart setting.
         chat: The chat instance for interaction with LLMs.
-              If omitted, `ChatOpenAI(temperature=0, model_name="gpt-3.5-turbo-0613")` will be used.
+              If omitted, `ChatOpenAI(temperature=0, model_name="gpt-4o")` will be used.
         function_call:
         language: Language of explanations. If not specified, it will be automatically inferred from user prompts.
         description_strategy: Type of how the information in the dataset is embedded in the prompt.
@@ -408,7 +408,7 @@ def parse_json(content: str) -> tuple[str, dict[str, Any]]:
 
 def _get_or_default_chat_model(chat: BaseChatModel | None) -> BaseChatModel:
     if chat is None:
-        return ChatOpenAI(temperature=0, model_name="gpt-3.5-turbo-0613")  # type: ignore
+        return ChatOpenAI(temperature=0, model_name="gpt-4o")  # type: ignore
     return chat
 
 
@@ -417,5 +417,5 @@ def _has_function_call_capability(chat: BaseChatModel) -> bool:
         return False
     return any(
         chat.model_name.startswith(prefix)
-        for prefix in ["gpt-4-0613", "gpt-3.5-turbo-0613"]
+        for prefix in ["gpt-4-0613", "gpt-4o"]
     )

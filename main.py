@@ -32,12 +32,12 @@ def dynamic_install(module):
 
 
 # https://python.plainenglish.io/how-to-install-your-own-private-github-package-on-streamlit-cloud-eb3aaed9b179
-try:
-    from chat2plot import ResponseType, chat2plot
-    from chat2plot.chat2plot import Chat2Vega
-except ModuleNotFoundError:
-    github_token = st.secrets["github_token"]
-    dynamic_install(f"git+https://{github_token}@github.com/nyanp/chat2plot.git")
+# try:
+from chat2plot import ResponseType, chat2plot
+from chat2plot.chat2plot import Chat2Vega
+# except ModuleNotFoundError:
+#     github_token = st.secrets["github_token"]
+#     dynamic_install(f"git+https://{github_token}@github.com/nyanp/chat2plot.git")
 
 
 def initialize_logger():
